@@ -1,4 +1,4 @@
-#include "main."
+#include "main.h"
 
 /**
   * _printf - writes strings to stdout
@@ -27,16 +27,16 @@ int _printf(const char *format, ...)
 		if (format[i] == '%')
 		{
 			i++;
-			while (ids[j].ch_id)
+			while (ids[j].c_id)
 			{
-				if (format[i] == ids[j].ch_id)
+				if (format[i] == ids[j].c_id)
 				{
 					count += ids[j].func_ptr(list);
 					break;
 				}
 				j++;
 			}
-			if (ids[j].ch_id == '\0')
+			if (ids[j].c_id == '\0')
 				return (-1);
 		}
 		else
@@ -48,3 +48,4 @@ int _printf(const char *format, ...)
 	va_end(list);
 	return (count);
 }
+
