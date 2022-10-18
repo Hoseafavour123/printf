@@ -11,6 +11,8 @@
   * @c: character specifier
   * @func_ptr - function pointer that takes variable arguments
   * @...: variable arguments
+  * @c_id: character format
+  * @func_ptr: Function pointer
   */
 
 typedef struct specifiers
@@ -25,4 +27,3 @@ int print_string(va_list list);
 int print_mod(va_list list);
 
 #endif
-
