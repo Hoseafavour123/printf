@@ -1,4 +1,3 @@
-#include <stdlib.h>
 #include "main.h"
 
 /**
@@ -58,7 +57,7 @@ int print_mod(va_list list)
 {
 	char c = '%';
 
-	void (list);
+	void(list);
 
 	write(1, &c, 1);
 
