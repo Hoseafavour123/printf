@@ -18,6 +18,8 @@ int _printf(const char *format, ...)
 		{'c', print_char},
 		{'s', print_string},
 		{'%', print_mod},
+		{'i', print_int},
+		{'d', print_int},
 		{'\0', NULL}
 	};
 	va_start(list, format);
