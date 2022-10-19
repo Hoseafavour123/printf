@@ -17,8 +17,6 @@ int _printf(const char *format, ...)
 	specifier_t ids[] = {
 		{'c', print_char},
 		{'s', print_string},
-		{'i', print_int},
-		{'d', print_int},
 		{'%', print_mod},
 		{'\0', NULL}
 	};
@@ -29,15 +27,15 @@ int _printf(const char *format, ...)
 			i++;
 			for (; format[i] != '\0'; i++)
 			{
-				for (j = 0; ids[j].id != '\0'; j++)
-					if (format[i] == ids[j].id)
+				for (j = 0; ids[j].c_id != '\0'; j++)
+					if (format[i] == ids[j].c_id)
 					{
 						count += ids[j].func_ptr(list);
 						break;
 
 
 					}
-				if (ids[j].id
+				if (ids[j].c_id)
 					break;
 			}
 			if (format[i] == '\0')
