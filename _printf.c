@@ -1,12 +1,13 @@
 #include "main.h"
+#include <stdio.h>
 
 /**
-  * _printf - writes strings to stdout
-  * @format: format of characters
-  * @...: variable arguments
-  *
-  * Return: number of characters
-  */
+ * _printf - writes strings to stdout
+ * @format: format of characters
+ * @...: variable arguments
+ *
+ * Return: number of characters
+ */
 
 int _printf(const char *format, ...)
 {
@@ -16,36 +17,37 @@ int _printf(const char *format, ...)
 	specifier_t ids[] = {
 		{'c', print_char},
 		{'s', print_string},
+		{'i', print_int},
+		{'d', print_int},
 		{'%', print_mod},
 		{'\0', NULL}
 	};
-	if (format)
-		va_start(list, format);
-
+	va_start(list, format);
 	for (i = 0; format[i]; i++)
-	{
 		if (format[i] == '%')
 		{
 			i++;
-			while (ids[j].c_id)
+			for (; format[i] != '\0'; i++)
 			{
-				if (format[i] == ids[j].c_id)
-				{
-					count += ids[j].func_ptr(list);
-					break;
-				}
-				j++;
+				for (j = 0; ids[j].id != '\0'; j++)
+					if (format[i] == ids[j].id)
+					{
+						count += ids[j].func_ptr(list);
+						break;
+
+
+					}
+				if (format[i] == '\0')
+					return (-1);
 			}
-			if (ids[j].c_id == '\0')
-				return (-1);
+			else
+			{
+				write(1, &format[i], 1);
+				count += 1;
+			}
+
+
 		}
-		else
-		{
-			write(1, &format[i], 1);
-			count += 1;
-		}
-	}
 	va_end(list);
 	return (count);
 }
-
