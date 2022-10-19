@@ -37,17 +37,19 @@ int _printf(const char *format, ...)
 
 
 					}
-				if (format[i] == '\0')
-					return (-1);
+				if (ids[j].id
+					break;
 			}
-			else
-			{
-				write(1, &format[i], 1);
-				count += 1;
-			}
-
-
+			if (format[i] == '\0')
+				return (-1);
 		}
+		else
+		{
+			write(1, &format[i], 1);
+			count += 1;
+		}
+
+
 	va_end(list);
 	return (count);
 }
